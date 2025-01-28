@@ -14,9 +14,13 @@ body {
 }
 
 header {
+  display: flex;
+  align-items: center;
+  justify-content: left; /* Space out items (h1 and search bar) */
+  gap: 20px;
   background-color: #f5ba13;
   margin: auto -16px;
-  padding: 16px 32px;
+  padding: 16px 30px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
 }
 
@@ -35,7 +39,7 @@ footer {
 }
 
 footer p {
-  color: #ccc;
+  color: rgb(99, 99, 12);
 }
 .note {
   background: #fff;
@@ -101,4 +105,16 @@ form.create-note button {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   outline: none;
+}
+
+.search-bar {
+  margin: 10px; /* Reset margin */
+}
+
+.search-bar input {
+  width: 500px; /* Set an appropriate width for the search bar */
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 5px; /* Add some padding for better spacing */
 }
