@@ -6,6 +6,7 @@ import CreateArea from "./CreateArea";
 
 function App() {
   const [notes, setNotes] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
   function addNote(newNote) {
     setNotes((prevNotes) => {
@@ -21,11 +22,18 @@ function App() {
     });
   }
 
+  const filteredNotes = notes.filter(
+    (note) =>
+      note.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      note.content.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div>
-      <Header />
+      <Header searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+
       <CreateArea onAdd={addNote} />
-      {notes.map((noteItem, index) => {
+      {filteredNotes.map((noteItem, index) => {
         return (
           <Note
             key={index}
