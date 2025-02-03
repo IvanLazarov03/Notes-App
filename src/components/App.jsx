@@ -29,21 +29,24 @@ function App() {
   );
 
   return (
-    <div>
+    <div className="App">
       <Header searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 
-      <CreateArea onAdd={addNote} />
-      {filteredNotes.map((noteItem, index) => {
-        return (
-          <Note
-            key={index}
-            id={index}
-            title={noteItem.title}
-            content={noteItem.content}
-            onDelete={deleteNote}
-          />
-        );
-      })}
+      <div>
+        <CreateArea onAdd={addNote} />
+        {filteredNotes.map((noteItem, index) => {
+          return (
+            <Note
+              key={index}
+              id={index}
+              title={noteItem.title}
+              content={noteItem.content}
+              onDelete={deleteNote}
+            />
+          );
+        })}
+      </div>
+
       <Footer />
     </div>
   );
