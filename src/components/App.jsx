@@ -22,6 +22,14 @@ function App() {
     });
   }
 
+  function editNote(id, newTitle, newContent) {
+    setNotes((prevNotes) =>
+      prevNotes.map((noteItem, index) =>
+        index === id ? { title: newTitle, content: newContent } : noteItem
+      )
+    );
+  }
+
   const filteredNotes = notes.filter(
     (note) =>
       note.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -42,6 +50,7 @@ function App() {
               title={noteItem.title}
               content={noteItem.content}
               onDelete={deleteNote}
+              onEdit={editNote}
             />
           );
         })}
