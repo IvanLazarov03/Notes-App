@@ -25,8 +25,23 @@ function Note(props) {
   }
 
   function saveEdit() {
-    props.onEdit(props.id, editedTitle, editedContent);
-    setIsEditing(false);
+    const updatedNote = {
+      title: editedTitle,
+      content: editedContent,
+    };
+    fetch(`http://localhost:5000/notes/${props.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(updatedNote),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        props.onEdit(props.id, data.title, data.content); //Update State posle db update
+        setIsEditing(false);
+      })
+      .catch((err) => console.error("Error updating note:", err));
   }
 
   function handleTitleChange(event) {
