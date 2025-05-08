@@ -23,7 +23,7 @@ const db = new pg.Client({
 db.connect();
 
 app.get("/", (req, res) => {
-  return res.json("Od backend");
+  return res.send("Od backend");
 });
 
 //funkcija so koja gi dobivame site notes
